@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Login ASAT - SMP PGRI 1 CIBINONG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 40px 32px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-icon {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .header-icon span {
+            font-size: 48px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0f766e;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .school-name {
+            text-align: center;
+            color: #334155;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .exam-title {
+            text-align: center;
+            background: #ccfbf1;
+            color: #0f766e;
+            padding: 10px 16px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 16px 0;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats {
+            background: #f0fdfa;
+            text-align: center;
+            padding: 10px;
+            border-radius: 20px;
+            margin-bottom: 28px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #0f766e;
+            border: 1px solid #ccfbf1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 15px;
+            transition: all 0.2s;
+            outline: none;
+            background: #f8fafc;
+        }
+
+        input:focus {
+            border-color: #14b8a6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .error-msg {
+            background: #fee2e2;
+            color: #b91c1c;
+            padding: 12px;
+            border-radius: 16px;
+            margin-top: 20px;
+            font-size: 13px;
+            display: none;
+            border-left: 4px solid #b91c1c;
+        }
+
+        .success-msg {
+            background: #dcfce7;
+            color: #166534;
+            padding: 12px;
+            border-radius: 16px;
+            margin-top: 20px;
+            font-size: 13px;
+            display: none;
+            border-left: 4px solid #166534;
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 11px;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 28px 20px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="header-icon">
+        <span>📚</span>
+    </div>
+    <h1>ASESMEN SUMATIF AKHIR TAHUN</h1>
+    <div class="school-name">SMP PGRI 1 CIBINONG</div>
+    <div style="text-align: center;">
+        <div class="exam-title">✍️ Tahun Ajaran 2025/2026</div>
+    </div>
+    <div class="stats">
+        🎯 Peserta Terdaftar: 844 Siswa | Kelas 7 & 8
+    </div>
+
+    <div class="form-group">
+        <label>🆔 ID Peserta</label>
+        <input type="text" id="userId" placeholder="Contoh: P001" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+        <label>🔑 PIN Akses</label>
+        <input type="password" id="password" placeholder="Masukkan PIN yang diberikan guru">
+    </div>
+
+    <button onclick="handleLogin()">✅ MASUK & MULAI ASESMEN</button>
+
+    <div id="errorMsg" class="error-msg"></div>
+    <div id="successMsg" class="success-msg"></div>
+    <div class="footer">
+        ⚠️ Perangkat dalam mode ujian | Hubungi guru jika lupa PIN
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // DATABASE 844 SISWA KELAS 7 & 8 - PASSWORD TETAP (STATIC)
+    // SMP PGRI 1 CIBINONG - TAHUN AJARAN 2025/2026
+    // ============================================================
+    
+    const DATABASE_SISWA = {
+        "P001": "8XK2M9N",
+        "P002": "7R4T8Y1",
+        "P003": "3W9Z7B2",
+        "P004": "5H7J9K2",
+        "P005": "2Q5X8C3",
+        "P006": "9M4N6B1",
+        "P007": "6K2L8M4",
+        "P008": "4C7V9B5",
+        "P009": "1X3Z5A7",
+        "P010": "8P6R4T2",
+        "P011": "0L9K7J3",
+        "P012": "7U5Y3W1",
+        "P013": "3E8D6C9",
+        "P014": "9A2S4D6",
+        "P015": "5F7H9J1",
+        "P016": "2Z4X6C8",
+        "P017": "6B8V0C2",
+        "P018": "4M7N9P1",
+        "P019": "8Q2W5S3",
+        "P020": "1F4G7H9",
+        "P021": "7J8K9L0",
+        "P022": "9Z0X1C2",
+        "P023": "3V4B5N6",
+        "P024": "2C3V4B5",
+        "P025": "6N7M8K9",
+        "P026": "5L4K3J2",
+        "P027": "9H8G7F6",
+        "P028": "1Q2W3E4",
+        "P029": "4R5T6Y7",
+        "P030": "7U8I9O0",
+        "P031": "8A9S0D1",
+        "P032": "2F3G4H5",
+        "P033": "6J7K8L9",
+        "P034": "0Z1X2C3",
+        "P035": "5V6B7N8",
+        "P036": "3M4N5B6",
+        "P037": "9L0K1J2",
+        "P038": "7H8G9F0",
+        "P039": "1D2S3A4",
+        "P040": "6Q7W8E9",
+        "P041": "4R5T6Y7",
+        "P042": "9U0I1O2",
+        "P043": "2P3A4S5",
+        "P044": "8D6F7G8",
+        "P045": "5H1J2K3",
+        "P046": "7L4Z5X6",
+        "P047": "3C8V9B0",
+        "P048": "1N2M3K4",
+        "P049": "9J5H6G7",
+        "P050": "6F4D3S2",
+        "P051": "2A1Q2W3",
+        "P052": "4E5R6T7",
+        "P053": "8Y9U0I1",
+        "P054": "7O2P3A4",
+        "P055": "5S6D7F8",
+        "P056": "9G8H7J6",
+        "P057": "1K2L3Z4",
+        "P058": "3X4C5V6",
+        "P059": "6B7N8M9",
+        "P060": "2Q1W2E3",
+        "P061": "8R4T5Y6",
+        "P062": "4U7I8O9",
+        "P063": "7P0A1S2",
+        "P064": "1D2F3G4",
+        "P065": "9H5J6K7",
+        "P066": "5L8Z9X0",
+        "P067": "3C4V5B6",
+        "P068": "2N1M2K3",
+        "P069": "6J7H8G9",
+        "P070": "7F6D5S4",
+        "P071": "4A3Q2W1",
+        "P072": "8E9R0T1",
+        "P073": "2Y3U4I5",
+        "P074": "5O6P7A8",
+        "P075": "9S0D1F2",
+        "P076": "1G2H3J4",
+        "P077": "7K5L6Z7",
+        "P078": "3X8C9V0",
+        "P079": "4B5N6M7",
+        "P080": "6Q7W8E9",
+        "P081": "8R0T1Y2",
+        "P082": "1U2I3O4",
+        "P083": "5P7A8S9",
+        "P084": "2D4F6G8",
+        "P085": "9H0J1K2",
+        "P086": "7L3Z4X5",
+        "P087": "6C7V8B9",
+        "P088": "4N5M6K7",
+        "P089": "1J2H3G4",
+        "P090": "8F5D4S3",
+        "P091": "3A2Q1W2",
+        "P092": "6E9R0T1",
+        "P093": "2Y7U8I9",
+        "P094": "5O0P1A2",
+        "P095": "9S3D4F5",
+        "P096": "1G6H7J8",
+        "P097": "7K9L0Z1",
+        "P098": "3X2C3V4",
+        "P099": "4B7N8M9",
+        "P100": "6Q1W2E3",
+        "P101": "8R4T5Y6",
+        "P102": "1U7I8O9",
+        "P103": "5P0A1S2",
+        "P104": "2D3F4G5",
+        "P105": "9H6J7K8",
+        "P106": "7L5Z6X7",
+        "P107": "6C8V9B0",
+        "P108": "4N1M2K3",
+        "P109": "1J4H5G6",
+        "P110": "8F7D6S5",
+        "P111": "3A4Q5W6",
+        "P112": "6E7R8T9",
+        "P113": "2Y1U2I3",
+        "P114": "5O4P5A6",
+        "P115": "9S7D8F9",
+        "P116": "1G0H1J2",
+        "P117": "7K3L4Z5",
+        "P118": "3X6C7V8",
+        "P119": "4B9N0M1",
+        "P120": "6Q2W3E4",
+        "P121": "8R5T6Y7",
+        "P122": "1U8I9O0",
+        "P123": "5P1A2S3",
+        "P124": "2D4F5G6",
+        "P125": "9H7J8K9",
+        "P126": "7L6Z7X8",
+        "P127": "6C9V0B1",
+        "P128": "4N2M3K4",
+        "P129": "1J5H6G7",
+        "P130": "8F8D7S6",
+        "P131": "3A5Q6W7",
+        "P132": "6E8R9T0",
+        "P133": "2Y2U3I4",
+        "P134": "5O5P6A7",
+        "P135": "9S8D9F0",
+        "P136": "1G1H2J3",
+        "P137": "7K4L5Z6",
+        "P138": "3X7C8V9",
+        "P139": "4B0N1M2",
+        "P140": "6Q3W4E5",
+        "P141": "8R6T7Y8",
+        "P142": "1U9I0O1",
+        "P143": "5P2A3S4",
+        "P144": "2D5F6G7",
+        "P145": "9H8J9K0",
+        "P146": "7L7Z8X9",
+        "P147": "6C0V1B2",
+        "P148": "4N3M4K5",
+        "P149": "1J6H7G8",
+        "P150": "8F9D8S7",
+        "P151": "3A6Q7W8",
+        "P152": "6E9R0T1",
+        "P153": "2Y3U4I5",
+        "P154": "5O6P7A8",
+        "P155": "9S9D0F1",
+        "P156": "1G2H3J4",
+        "P157": "7K5L6Z7",
+        "P158": "3X8C9V0",
+        "P159": "4B1N2M3",
+        "P160": "6Q4W5E6",
+        "P161": "8R7T8Y9",
+        "P162": "1U0I1O2",
+        "P163": "5P3A4S5",
+        "P164": "2D6F7G8",
+        "P165": "9H9J0K1",
+        "P166": "7L8Z9X0",
+        "P167": "6C1V2B3",
+        "P168": "4N4M5K6",
+        "P169": "1J7H8G9",
+        "P170": "8F0D9S8",
+        "P171": "3A7Q8W9",
+        "P172": "6E0R1T2",
+        "P173": "2Y4U5I6",
+        "P174": "5O7P8A9",
+        "P175": "9S0D1F2",
+        "P176": "1G3H4J5",
+        "P177": "7K6L7Z8",
+        "P178": "3X9C0V1",
+        "P179": "4B2N3M4",
+        "P180": "6Q5W6E7",
+        "P181": "8R8T9Y0",
+        "P182": "1U1I2O3",
+        "P183": "5P4A5S6",
+        "P184": "2D7F8G9",
+        "P185": "9H0J1K2",
+        "P186": "7L9Z0X1",
+        "P187": "6C2V3B4",
+        "P188": "4N5M6K7",
+        "P189": "1J8H9G0",
+        "P190": "8F1D0S9",
+        "P191": "3A8Q9W0",
+        "P192": "6E1R2T3",
+        "P193": "2Y5U6I7",
+        "P194": "5O8P9A0",
+        "P195": "9S1D2F3",
+        "P196": "1G4H5J6",
+        "P197": "7K7L8Z9",
+        "P198": "3X0C1V2",
+        "P199": "4B3N4M5",
+        "P200": "6Q6W7E8",
+        "P201": "8R9T0Y1",
+        "P202": "1U2I3O4",
+        "P203": "5P5A6S7",
+        "P204": "2D8F9G0",
+        "P205": "9H1J2K3",
+        "P206": "7L0Z1X2",
+        "P207": "6C3V4B5",
+        "P208": "4N6M7K8",
+        "P209": "1J9H0G1",
+        "P210": "8F2D1S0",
+        "P211": "3A9Q0W1",
+        "P212": "6E2R3T4",
+        "P213": "2Y6U7I8",
+        "P214": "5O9P0A1",
+        "P215": "9S2D3F4",
+        "P216": "1G5H6J7",
+        "P217": "7K8L9Z0",
+        "P218": "3X1C2V3",
+        "P219": "4B4N5M6",
+        "P220": "6Q7W8E9",
+        "P221": "8R0T1Y2",
+        "P222": "1U3I4O5",
+        "P223": "5P6A7S8",
+        "P224": "2D9F0G1",
+        "P225": "9H2J3K4",
+        "P226": "7L1Z2X3",
+        "P227": "6C4V5B6",
+        "P228": "4N7M8K9",
+        "P229": "1J0H1G2",
+        "P230": "8F3D2S1",
+        "P231": "3A0Q1W2",
+        "P232": "6E3R4T5",
+        "P233": "2Y7U8I9",
+        "P234": "5O0P1A2",
+        "P235": "9S3D4F5",
+        "P236": "1G6H7J8",
+        "P237": "7K9L0Z1",
+        "P238": "3X2C3V4",
+        "P239": "4B5N6M7",
+        "P240": "6Q8W9E0",
+        "P241": "8R1T2Y3",
+        "P242": "1U4I5O6",
+        "P243": "5P7A8S9",
+        "P244": "2D0F1G2",
+        "P245": "9H3J4K5",
+        "P246": "7L2Z3X4",
+        "P247": "6C5V6B7",
+        "P248": "4N8M9K0",
+        "P249": "1J1H2G3",
+        "P250": "8F4D3S2",
+        "P251": "3A1Q2W3",
+        "P252": "6E4R5T6",
+        "P253": "2Y8U9I0",
+        "P254": "5O1P2A3",
+        "P255": "9S4D5F6",
+        "P256": "1G7H8J9",
+        "P257": "7K0L1Z2",
+        "P258": "3X3C4V5",
+        "P259": "4B6N7M8",
+        "P260": "6Q9W0E1",
+        "P261": "8R2T3Y4",
+        "P262": "1U5I6O7",
+        "P263": "5P8A9S0",
+        "P264": "2D1F2G3",
+        "P265": "9H4J5K6",
+        "P266": "7L3Z4X5",
+        "P267": "6C6V7B8",
+        "P268": "4N9M0K1",
+        "P269": "1J2H3G4",
+        "P270": "8F5D4S3",
+        "P271": "3A2Q3W4",
+        "P272": "6E5R6T7",
+        "P273": "2Y9U0I1",
+        "P274": "5O2P3A4",
+        "P275": "9S5D6F7",
+        "P276": "1G8H9J0",
+        "P277": "7K1L2Z3",
+        "P278": "3X4C5V6",
+        "P279": "4B7N8M9",
+        "P280": "6Q0W1E2",
+        "P281": "8R3T4Y5",
+        "P282": "1U6I7O8",
+        "P283": "5P9A0S1",
+        "P284": "2D2F3G4",
+        "P285": "9H5J6K7",
+        "P286": "7L4Z5X6",
+        "P287": "6C7V8B9",
+        "P288": "4N0M1K2",
+        "P289": "1J3H4G5",
+        "P290": "8F6D5S4",
+        "P291": "3A3Q4W5",
+        "P292": "6E6R7T8",
+        "P293": "2Y0U1I2",
+        "P294": "5O3P4A5",
+        "P295": "9S6D7F8",
+        "P296": "1G9H0J1",
+        "P297": "7K2L3Z4",
+        "P298": "3X5C6V7",
+        "P299": "4B8N9M0",
+        "P300": "6Q1W2E3",
+        "P301": "8R4T5Y6",
+        "P302": "1U7I8O9",
+        "P303": "5P0A1S2",
+        "P304": "2D3F4G5",
+        "P305": "9H6J7K8",
+        "P306": "7L5Z6X7",
+        "P307": "6C8V9B0",
+        "P308": "4N1M2K3",
+        "P309": "1J4H5G6",
+        "P310": "8F7D6S5",
+        "P311": "3A4Q5W6",
+        "P312": "6E7R8T9",
+        "P313": "2Y1U2I3",
+        "P314": "5O4P5A6",
+        "P315": "9S7D8F9",
+        "P316": "1G0H1J2",
+        "P317": "7K3L4Z5",
+        "P318": "3X6C7V8",
+        "P319": "4B9N0M1",
+        "P320": "6Q2W3E4",
+        "P321": "8R5T6Y7",
+        "P322": "1U8I9O0",
+        "P323": "5P1A2S3",
+        "P324": "2D4F5G6",
+        "P325": "9H7J8K9",
+        "P326": "7L6Z7X8",
+        "P327": "6C9V0B1",
+        "P328": "4N2M3K4",
+        "P329": "1J5H6G7",
+        "P330": "8F8D7S6",
+        "P331": "3A5Q6W7",
+        "P332": "6E8R9T0",
+        "P333": "2Y2U3I4",
+        "P334": "5O5P6A7",
+        "P335": "9S8D9F0",
+        "P336": "1G1H2J3",
+        "P337": "7K4L5Z6",
+        "P338": "3X7C8V9",
+        "P339": "4B0N1M2",
+        "P340": "6Q3W4E5",
+        "P341": "8R6T7Y8",
+        "P342": "1U9I0O1",
+        "P343": "5P2A3S4",
+        "P344": "2D5F6G7",
+        "P345": "9H8J9K0",
+        "P346": "7L7Z8X9",
+        "P347": "6C0V1B2",
+        "P348": "4N3M4K5",
+        "P349": "1J6H7G8",
+        "P350": "8F9D8S7",
+        "P351": "3A6Q7W8",
+        "P352": "6E9R0T1",
+        "P353": "2Y3U4I5",
+        "P354": "5O6P7A8",
+        "P355": "9S9D0F1",
+        "P356": "1G2H3J4",
+        "P357": "7K5L6Z7",
+        "P358": "3X8C9V0",
+        "P359": "4B1N2M3",
+        "P360": "6Q4W5E6",
+        "P361": "8R7T8Y9",
+        "P362": "1U0I1O2",
+        "P363": "5P3A4S5",
+        "P364": "2D6F7G8",
+        "P365": "9H9J0K1",
+        "P366": "7L8Z9X0",
+        "P367": "6C1V2B3",
+        "P368": "4N4M5K6",
+        "P369": "1J7H8G9",
+        "P370": "8F0D9S8",
+        "P371": "3A7Q8W9",
+        "P372": "6E0R1T2",
+        "P373": "2Y4U5I6",
+        "P374": "5O7P8A9",
+        "P375": "9S0D1F2",
+        "P376": "1G3H4J5",
+        "P377": "7K6L7Z8",
+        "P378": "3X9C0V1",
+        "P379": "4B2N3M4",
+        "P380": "6Q5W6E7",
+        "P381": "8R8T9Y0",
+        "P382": "1U1I2O3",
+        "P383": "5P4A5S6",
+        "P384": "2D7F8G9",
+        "P385": "9H0J1K2",
+        "P386": "7L9Z0X1",
+        "P387": "6C2V3B4",
+        "P388": "4N5M6K7",
+        "P389": "1J8H9G0",
+        "P390": "8F1D0S9",
+        "P391": "3A8Q9W0",
+        "P392": "6E1R2T3",
+        "P393": "2Y5U6I7",
+        "P394": "5O8P9A0",
+        "P395": "9S1D2F3",
+        "P396": "1G4H5J6",
+        "P397": "7K7L8Z9",
+        "P398": "3X0C1V2",
+        "P399": "4B3N4M5",
+        "P400": "6Q6W7E8",
+        "P401": "8R9T0Y1",
+        "P402": "1U2I3O4",
+        "P403": "5P5A6S7",
+        "P404": "2D8F9G0",
+        "P405": "9H1J2K3",
+        "P406": "7L0Z1X2",
+        "P407": "6C3V4B5",
+        "P408": "4N6M7K8",
+        "P409": "1J9H0G1",
+        "P410": "8F2D1S0",
+        "P411": "3A9Q0W1",
+        "P412": "6E2R3T4",
+        "P413": "2Y6U7I8",
+        "P414": "5O9P0A1",
+        "P415": "9S2D3F4",
+        "P416": "1G5H6J7",
+        "P417": "7K8L9Z0",
+        "P418": "3X1C2V3",
+        "P419": "4B4N5M6",
+        "P420": "6Q7W8E9",
+        "P421": "8R0T1Y2",
+        "P422": "1U3I4O5",
+        "P423": "5P6A7S8",
+        "P424": "2D9F0G1",
+        "P425": "9H2J3K4",
+        "P426": "7L1Z2X3",
+        "P427": "6C4V5B6",
+        "P428": "4N7M8K9",
+        "P429": "1J0H1G2",
+        "P430": "8F3D2S1",
+        "P431": "3A0Q1W2",
+        "P432": "6E3R4T5",
+        "P433": "2Y7U8I9",
+        "P434": "5O0P1A2",
+        "P435": "9S3D4F5",
+        "P436": "1G6H7J8",
+        "P437": "7K9L0Z1",
+        "P438": "3X2C3V4",
+        "P439": "4B5N6M7",
+        "P440": "6Q8W9E0",
+        "P441": "8R1T2Y3",
+        "P442": "1U4I5O6",
+        "P443": "5P7A8S9",
+        "P444": "2D0F1G2",
+        "P445": "9H3J4K5",
+        "P446": "7L2Z3X4",
+        "P447": "6C5V6B7",
+        "P448": "4N8M9K0",
+        "P449": "1J1H2G3",
+        "P450": "8F4D3S2",
+        "P451": "3A1Q2W3",
+        "P452": "6E4R5T6",
+        "P453": "2Y8U9I0",
+        "P454": "5O1P2A3",
+        "P455": "9S4D5F6",
+        "P456": "1G7H8J9",
+        "P457": "7K0L1Z2",
+        "P458": "3X3C4V5",
+        "P459": "4B6N7M8",
+        "P460": "6Q9W0E1",
+        "P461": "8R2T3Y4",
+        "P462": "1U5I6O7",
+        "P463": "5P8A9S0",
+        "P464": "2D1F2G3",
+        "P465": "9H4J5K6",
+        "P466": "7L3Z4X5",
+        "P467": "6C6V7B8",
+        "P468": "4N9M0K1",
+        "P469": "1J2H3G4",
+        "P470": "8F5D4S3",
+        "P471": "3A2Q3W4",
+        "P472": "6E5R6T7",
+        "P473": "2Y9U0I1",
+        "P474": "5O2P3A4",
+        "P475": "9S5D6F7",
+        "P476": "1G8H9J0",
+        "P477": "7K1L2Z3",
+        "P478": "3X4C5V6",
+        "P479": "4B7N8M9",
+        "P480": "6Q0W1E2",
+        "P481": "8R3T4Y5",
+        "P482": "1U6I7O8",
+        "P483": "5P9A0S1",
+        "P484": "2D2F3G4",
+        "P485": "9H5J6K7",
+        "P486": "7L4Z5X6",
+        "P487": "6C7V8B9",
+        "P488": "4N0M1K2",
+        "P489": "1J3H4G5",
+        "P490": "8F6D5S4",
+        "P491": "3A3Q4W5",
+        "P492": "6E6R7T8",
+        "P493": "2Y0U1I2",
+        "P494": "5O3P4A5",
+        "P495": "9S6D7F8",
+        "P496": "1G9H0J1",
+        "P497": "7K2L3Z4",
+        "P498": "3X5C6V7",
+        "P499": "4B8N9M0",
+        "P500": "6Q1W2E3",
+        "P501": "8R4T5Y6",
+        "P502": "1U7I8O9",
+        "P503": "5P0A1S2",
+        "P504": "2D3F4G5",
+        "P505": "9H6J7K8",
+        "P506": "7L5Z6X7",
+        "P507": "6C8V9B0",
+        "P508": "4N1M2K3",
+        "P509": "1J4H5G6",
+        "P510": "8F7D6S5",
+        "P511": "3A4Q5W6",
+        "P512": "6E7R8T9",
+        "P513": "2Y1U2I3",
+        "P514": "5O4P5A6",
+        "P515": "9S7D8F9",
+        "P516": "1G0H1J2",
+        "P517": "7K3L4Z5",
+        "P518": "3X6C7V8",
+        "P519": "4B9N0M1",
+        "P520": "6Q2W3E4",
+        "P521": "8R5T6Y7",
+        "P522": "1U8I9O0",
+        "P523": "5P1A2S3",
+        "P524": "2D4F5G6",
+        "P525": "9H7J8K9",
+        "P526": "7L6Z7X8",
+        "P527": "6C9V0B1",
+        "P528": "4N2M3K4",
+        "P529": "1J5H6G7",
+        "P530": "8F8D7S6",
+        "P531": "3A5Q6W7",
+        "P532": "6E8R9T0",
+        "P533": "2Y2U3I4",
+        "P534": "5O5P6A7",
+        "P535": "9S8D9F0",
+        "P536": "1G1H2J3",
+        "P537": "7K4L5Z6",
+        "P538": "3X7C8V9",
+        "P539": "4B0N1M2",
+        "P540": "6Q3W4E5",
+        "P541": "8R6T7Y8",
+        "P542": "1U9I0O1",
+        "P543": "5P2A3S4",
+        "P544": "2D5F6G7",
+        "P545": "9H8J9K0",
+        "P546": "7L7Z8X9",
+        "P547": "6C0V1B2",
+        "P548": "4N3M4K5",
+        "P549": "1J6H7G8",
+        "P550": "8F9D8S7",
+        "P551": "3A6Q7W8",
+        "P552": "6E9R0T1",
+        "P553": "2Y3U4I5",
+        "P554": "5O6P7A8",
+        "P555": "9S9D0F1",
+        "P556": "1G2H3J4",
+        "P557": "7K5L6Z7",
+        "P558": "3X8C9V0",
+        "P559": "4B1N2M3",
+        "P560": "6Q4W5E6",
+        "P561": "8R7T8Y9",
+        "P562": "1U0I1O2",
+        "P563": "5P3A4S5",
+        "P564": "2D6F7G8",
+        "P565": "9H9J0K1",
+        "P566": "7L8Z9X0",
+        "P567": "6C1V2B3",
+        "P568": "4N4M5K6",
+        "P569": "1J7H8G9",
+        "P570": "8F0D9S8",
+        "P571": "3A7Q8W9",
+        "P572": "6E0R1T2",
+        "P573": "2Y4U5I6",
+        "P574": "5O7P8A9",
+        "P575": "9S0D1F2",
+        "P576": "1G3H4J5",
+        "P577": "7K6L7Z8",
+        "P578": "3X9C0V1",
+        "P579": "4B2N3M4",
+        "P580": "6Q5W6E7",
+        "P581": "8R8T9Y0",
+        "P582": "1U1I2O3",
+        "P583": "5P4A5S6",
+        "P584": "2D7F8G9",
+        "P585": "9H0J1K2",
+        "P586": "7L9Z0X1",
+        "P587": "6C2V3B4",
+        "P588": "4N5M6K7",
+        "P589": "1J8H9G0",
+        "P590": "8F1D0S9",
+        "P591": "3A8Q9W0",
+        "P592": "6E1R2T3",
+        "P593": "2Y5U6I7",
+        "P594": "5O8P9A0",
+        "P595": "9S1D2F3",
+        "P596": "1G4H5J6",
+        "P597": "7K7L8Z9",
+        "P598": "3X0C1V2",
+        "P599": "4B3N4M5",
+        "P600": "6Q6W7E8",
+        "P601": "8R9T0Y1",
+        "P602": "1U2I3O4",
+        "P603": "5P5A6S7",
+        "P604": "2D8F9G0",
+        "P605": "9H1J2K3",
+        "P606": "7L0Z1X2",
+        "P607": "6C3V4B5",
+        "P608": "4N6M7K8",
+        "P609": "1J9H0G1",
+        "P610": "8F2D1S0",
+        "P611": "3A9Q0W1",
+        "P612": "6E2R3T4",
+        "P613": "2Y6U7I8",
+        "P614": "5O9P0A1",
+        "P615": "9S2D3F4",
+        "P616": "1G5H6J7",
+        "P617": "7K8L9Z0",
+        "P618": "3X1C2V3",
+        "P619": "4B4N5M6",
+        "P620": "6Q7W8E9",
+        "P621": "8R0T1Y2",
+        "P622": "1U3I4O5",
+        "P623": "5P6A7S8",
+        "P624": "2D9F0G1",
+        "P625": "9H2J3K4",
+        "P626": "7L1Z2X3",
+        "P627": "6C4V5B6",
+        "P628": "4N7M8K9",
+        "P629": "1J0H1G2",
+        "P630": "8F3D2S1",
+        "P631": "3A0Q1W2",
+        "P632": "6E3R4T5",
+        "P633": "2Y7U8I9",
+        "P634": "5O0P1A2",
+        "P635": "9S3D4F5",
+        "P636": "1G6H7J8",
+        "P637": "7K9L0Z1",
+        "P638": "3X2C3V4",
+        "P639": "4B5N6M7",
+        "P640": "6Q8W9E0",
+        "P641": "8R1T2Y3",
+        "P642": "1U4I5O6",
+        "P643": "5P7A8S9",
+        "P644": "2D0F1G2",
+        "P645": "9H3J4K5",
+        "P646": "7L2Z3X4",
+        "P647": "6C5V6B7",
+        "P648": "4N8M9K0",
+        "P649": "1J1H2G3",
+        "P650": "8F4D3S2",
+        "P651": "3A1Q2W3",
+        "P652": "6E4R5T6",
+        "P653": "2Y8U9I0",
+        "P654": "5O1P2A3",
+        "P655": "9S4D5F6",
+        "P656": "1G7H8J9",
+        "P657": "7K0L1Z2",
+        "P658": "3X3C4V5",
+        "P659": "4B6N7M8",
+        "P660": "6Q9W0E1",
+        "P661": "8R2T3Y4",
+        "P662": "1U5I6O7",
+        "P663": "5P8A9S0",
+        "P664": "2D1F2G3",
+        "P665": "9H4J5K6",
+        "P666": "7L3Z4X5",
+        "P667": "6C6V7B8",
+        "P668": "4N9M0K1",
+        "P669": "1J2H3G4",
+        "P670": "8F5D4S3",
+        "P671": "3A2Q3W4",
+        "P672": "6E5R6T7",
+        "P673": "2Y9U0I1",
+        "P674": "5O2P3A4",
+        "P675": "9S5D6F7",
+        "P676": "1G8H9J0",
+        "P677": "7K1L2Z3",
+        "P678": "3X4C5V6",
+        "P679": "4B7N8M9",
+        "P680": "6Q0W1E2",
+        "P681": "8R3T4Y5",
+        "P682": "1U6I7O8",
+        "P683": "5P9A0S1",
+        "P684": "2D2F3G4",
+        "P685": "9H5J6K7",
+        "P686": "7L4Z5X6",
+        "P687": "6C7V8B9",
+        "P688": "4N0M1K2",
+        "P689": "1J3H4G5",
+        "P690": "8F6D5S4",
+        "P691": "3A3Q4W5",
+        "P692": "6E6R7T8",
+        "P693": "2Y0U1I2",
+        "P694": "5O3P4A5",
+        "P695": "9S6D7F8",
+        "P696": "1G9H0J1",
+        "P697": "7K2L3Z4",
+        "P698": "3X5C6V7",
+        "P699": "4B8N9M0",
+        "P700": "6Q1W2E3",
+        "P701": "8R4T5Y6",
+        "P702": "1U7I8O9",
+        "P703": "5P0A1S2",
+        "P704": "2D3F4G5",
+        "P705": "9H6J7K8",
+        "P706": "7L5Z6X7",
+        "P707": "6C8V9B0",
+        "P708": "4N1M2K3",
+        "P709": "1J4H5G6",
+        "P710": "8F7D6S5",
+        "P711": "3A4Q5W6",
+        "P712": "6E7R8T9",
+        "P713": "2Y1U2I3",
+        "P714": "5O4P5A6",
+        "P715": "9S7D8F9",
+        "P716": "1G0H1J2",
+        "P717": "7K3L4Z5",
+        "P718": "3X6C7V8",
+        "P719": "4B9N0M1",
+        "P720": "6Q2W3E4",
+        "P721": "8R5T6Y7",
+        "P722": "1U8I9O0",
+        "P723": "5P1A2S3",
+        "P724": "2D4F5G6",
+        "P725": "9H7J8K9",
+        "P726": "7L6Z7X8",
+        "P727": "6C9V0B1",
+        "P728": "4N2M3K4",
+        "P729": "1J5H6G7",
+        "P730": "8F8D7S6",
+        "P731": "3A5Q6W7",
+        "P732": "6E8R9T0",
+        "P733": "2Y2U3I4",
+        "P734": "5O5P6A7",
+        "P735": "9S8D9F0",
+        "P736": "1G1H2J3",
+        "P737": "7K4L5Z6",
+        "P738": "3X7C8V9",
+        "P739": "4B0N1M2",
+        "P740": "6Q3W4E5",
+        "P741": "8R6T7Y8",
+        "P742": "1U9I0O1",
+        "P743": "5P2A3S4",
+        "P744": "2D5F6G7",
+        "P745": "9H8J9K0",
+        "P746": "7L7Z8X9",
+        "P747": "6C0V1B2",
+        "P748": "4N3M4K5",
+        "P749": "1J6H7G8",
+        "P750": "8F9D8S7",
+        "P751": "3A6Q7W8",
+        "P752": "6E9R0T1",
+        "P753": "2Y3U4I5",
+        "P754": "5O6P7A8",
+        "P755": "9S9D0F1",
+        "P756": "1G2H3J4",
+        "P757": "7K5L6Z7",
+        "P758": "3X8C9V0",
+        "P759": "4B1N2M3",
+        "P760": "6Q4W5E6",
+        "P761": "8R7T8Y9",
+        "P762": "1U0I1O2",
+        "P763": "5P3A4S5",
+        "P764": "2D6F7G8",
+        "P765": "9H9J0K1",
+        "P766": "7L8Z9X0",
+        "P767": "6C1V2B3",
+        "P768": "4N4M5K6",
+        "P769": "1J7H8G9",
+        "P770": "8F0D9S8",
+        "P771": "3A7Q8W9",
+        "P772": "6E0R1T2",
+        "P773": "2Y4U5I6",
+        "P774": "5O7P8A9",
+        "P775": "9S0D1F2",
+        "P776": "1G3H4J5",
+        "P777": "7K6L7Z8",
+        "P778": "3X9C0V1",
+        "P779": "4B2N3M4",
+        "P780": "6Q5W6E7",
+        "P781": "8R8T9Y0",
+        "P782": "1U1I2O3",
+        "P783": "5P4A5S6",
+        "P784": "2D7F8G9",
+        "P785": "9H0J1K2",
+        "P786": "7L9Z0X1",
+        "P787": "6C2V3B4",
+        "P788": "4N5M6K7",
+        "P789": "1J8H9G0",
+        "P790": "8F1D0S9",
+        "P791": "3A8Q9W0",
+        "P792": "6E1R2T3",
+        "P793": "2Y5U6I7",
+        "P794": "5O8P9A0",
+        "P795": "9S1D2F3",
+        "P796": "1G4H5J6",
+        "P797": "7K7L8Z9",
+        "P798": "3X0C1V2",
+        "P799": "4B3N4M5",
+        "P800": "6Q6W7E8",
+        "P801": "8R9T0Y1",
+        "P802": "1U2I3O4",
+        "P803": "5P5A6S7",
+        "P804": "2D8F9G0",
+        "P805": "9H1J2K3",
+        "P806": "7L0Z1X2",
+        "P807": "6C3V4B5",
+        "P808": "4N6M7K8",
+        "P809": "1J9H0G1",
+        "P810": "8F2D1S0",
+        "P811": "3A9Q0W1",
+        "P812": "6E2R3T4",
+        "P813": "2Y6U7I8",
+        "P814": "5O9P0A1",
+        "P815": "9S2D3F4",
+        "P816": "1G5H6J7",
+        "P817": "7K8L9Z0",
+        "P818": "3X1C2V3",
+        "P819": "4B4N5M6",
+        "P820": "6Q7W8E9",
+        "P821": "8R0T1Y2",
+        "P822": "1U3I4O5",
+        "P823": "5P6A7S8",
+        "P824": "2D9F0G1",
+        "P825": "9H2J3K4",
+        "P826": "7L1Z2X3",
+        "P827": "6C4V5B6",
+        "P828": "4N7M8K9",
+        "P829": "1J0H1G2",
+        "P830": "8F3D2S1",
+        "P831": "3A0Q1W2",
+        "P832": "6E3R4T5",
+        "P833": "2Y7U8I9",
+        "P834": "5O0P1A2",
+        "P835": "9S3D4F5",
+        "P836": "1G6H7J8",
+        "P837": "7K9L0Z1",
+        "P838": "3X2C3V4",
+        "P839": "4B5N6M7",
+        "P840": "6Q8W9E0",
+        "P841": "8R1T2Y3",
+        "P842": "1U4I5O6",
+        "P843": "5P7A8S9",
+        "P844": "2D0F1G2"
+    };
+
+    // ============================================================
+    // INFORMASI DI CONSOLE (UNTUK ADMIN)
+    // ============================================================
+    console.log("========================================");
+    console.log("🏫 SMP PGRI 1 CIBINONG");
+    console.log("📝 ASESMEN SUMATIF AKHIR TAHUN");
+    console.log("📅 TAHUN AJARAN 2025/2026");
+    console.log("👥 KELAS 7 & 8");
+    console.log("========================================");
+    console.log(`✅ Sistem siap. Total akun: ${Object.keys(DATABASE_SISWA).length} siswa`);
+    console.log("📌 Contoh 5 PIN pertama:");
+    let count = 0;
+    for (let [id, pin] of Object.entries(DATABASE_SISWA)) {
+        if (count++ < 5) console.log(`   ${id} → ${pin}`);
+        else break;
+    }
+    console.log("📌 Untuk melihat SEMUA PIN, ketik: DATABASE_SISWA");
+    console.log("========================================");
+
+    // ============================================================
+    // TUJUAN SETELAH LOGIN (Google Sites)
+    // 🔴 GANTI URL INI dengan link Google Sites asli sekolah! 🔴
+    // ============================================================
+    const TARGET_URL = "https://sites.google.com/d/1f9r2XiqkmHD6YWPEnzeSk870pUZMeYk4/p/1h4aY2Valzc1fdZiNP_VDSklk7J-s4J8w/edit";
+
+    // ============================================================
+    // PROSES LOGIN
+    // ============================================================
+    function handleLogin() {
+        const userId = document.getElementById("userId").value.trim().toUpperCase();
+        const pin = document.getElementById("password").value;
+        const errorDiv = document.getElementById("errorMsg");
+        const successDiv = document.getElementById("successMsg");
+
+        errorDiv.style.display = "none";
+        successDiv.style.display = "none";
+
+        if (!userId) {
+            showError("❌ ID Peserta tidak boleh kosong!");
+            return;
+        }
+        if (!pin) {
+            showError("❌ PIN Akses tidak boleh kosong!");
+            return;
+        }
+
+        // Validasi format ID (P001 - P844)
+        if (!/^P[0-9]{3}$/.test(userId)) {
+            showError("❌ Format ID salah! Gunakan format P001 sampai P844");
+            return;
+        }
+
+        // Validasi ke database statis
+        if (DATABASE_SISWA[userId]) {
+            if (DATABASE_SISWA[userId] === pin) {
+                showSuccess("✅ Login berhasil! Mengalihkan ke ruang asesmen...");
+                setTimeout(() => {
+                    window.location.href = TARGET_URL;
+                }, 1200);
+            } else {
+                showError(`❌ PIN salah untuk ID: ${userId}`);
+                document.getElementById("password").value = "";
+            }
+        } else {
+            showError("❌ ID Peserta tidak terdaftar! Periksa kembali ID Anda.");
+            document.getElementById("password").value = "";
+        }
+    }
+
+    function showError(msg) {
+        const el = document.getElementById("errorMsg");
+        el.innerText = msg;
+        el.style.display = "block";
+    }
+
+    function showSuccess(msg) {
+        const el = document.getElementById("successMsg");
+        el.innerText = msg;
+        el.style.display = "block";
+    }
+
+    // Event tombol Enter
+    document.getElementById("userId").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            document.getElementById("password").focus();
+        }
+    });
+    document.getElementById("password").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            handleLogin();
+        }
+    });
+</script>
+</body>
+</html>
